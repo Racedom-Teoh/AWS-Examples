@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+echo "== sync"
 
 # 設置腳本遇到錯誤時停止執行
 set -e
@@ -6,9 +7,10 @@ set -e
 # 定義輸出目錄變數
 OUTPUT_DIR="/tmp/s3-bash-scripts"
 
-# 刪除已存在的 OUTPUT_DIR 目錄及其內容
-# 這樣可以保證每次執行腳本時是從乾淨的狀態開始
-rm -r "$OUTPUT_DIR"
+# 刪除已存在的 OUTPUT_DIR 目錄及其內容（如果目錄存在）
+if [ -d "$OUTPUT_DIR" ]; then
+    rm -r "$OUTPUT_DIR"
+fi
 
 # 創建新的輸出目錄（如果該目錄不存在）
 mkdir -p "$OUTPUT_DIR"
@@ -35,7 +37,7 @@ FILENAME_PREFIX=$2
 # 創建隨機數量的文件
 for i in $(seq 1 $num_files); do
   # 生成隨機的文件名
-  file_name="$OUTPUT_DIR/$FILENAME_PREFIX_$i.txt"
+  file_name="$OUTPUT_DIR/${FILENAME_PREFIX}_$i.txt"
   
   # 使用 dd 命令生成隨機內容
   dd if=/dev/urandom of="$file_name" bs=1024 count=$((RANDOM % 1024 + 1)) 2>/dev/null

@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+echo "== delete objects"  # 顯示同步信息
+
+# 設置腳本遇到錯誤時停止執行
+set -e  # 任何錯誤會終止腳本
+
+# 檢查是否提供了桶名稱（第一個命令行參數）
+if [ -z "$1" ] ; then
+    echo "There needs to be a bucket name eg. ./bucket my-bucket-name"
+    exit 1  # 沒有提供桶名稱時退出腳本
+fi 
+
+BUCKET_NAME=$1  # 將第一個參數（桶名稱）存儲在變數中
+
+echo "Using bucket: $BUCKET_NAME"  # 確認桶名稱
+
+# 列出桶中的所有物件並生成刪除清單
+aws s3api list-objects-v2 --bucket "$BUCKET_NAME" --query "Contents[].Key" --output json \
+  | jq -r '{Objects: [.[] | {Key: .}]} ' > /tmp/delete_objects.json  # 生成刪除格式，並將結果存儲到 /tmp/delete_objects.json 文件
+
+# 檢查 /tmp/delete_objects.json 是否生成了有效的刪除清單
+echo "Delete object list:"
+cat /tmp/delete_objects.json
+
+# 使用刪除清單進行物件刪除
+aws s3api delete-objects --bucket "$BUCKET_NAME" --delete file:///tmp/delete_objects.json  # 刪除桶中的物件

@@ -11,5 +11,11 @@ chmod -R +x ./s3/bash-scripts
 (top10)   ./s3/bash-scripts/list-bucket
 (newest)  ./s3/bash-scripts/get-newest-bucket
 
+### sync (random create file)
+ ./s3/bash-scripts/sync (bucket_name) myfile-prefix
 
+### put-object
+ ./s3/bash-scripts/put-objects (bucket_name) /tmp/newfile.txt
 
+### delete-objects (all)
+ ./s3/bash-scripts/delete-objects (bucket_name)b
