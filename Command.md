@@ -22,3 +22,10 @@ chmod -R +x ./s3/bash-scripts
 
 ### delete-objects (all)
 ./s3/bash-scripts/delete-objects (bucket_name)
+
+
+## Powershell (only s3)
+pwsh 
+
+### install module
+Install-AWSToolsModule AWS.Tools.S3 -CleanUp
