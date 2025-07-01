@@ -7,3 +7,9 @@
 ### Permission denied
 chmod -R +x ./s3/bash-scripts 
 
+### list bucket
+(top10)   ./s3/bash-scripts/list-bucket
+(newest)  ./s3/bash-scripts/get-newest-bucket
+
+
+
