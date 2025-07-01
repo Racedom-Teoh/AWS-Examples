@@ -1,8 +1,11 @@
+### auto_prompt
+export AWS_CLI_AUTO_PROMPT=on-partial
+
 ### create bucket
- ./s3/bash-scripts/create-bucket (bucket_name)
+./s3/bash-scripts/create-bucket (bucket_name)
 
 ### delete bucket
- ./s3/bash-scripts/delete-bucket (bucket_name)
+./s3/bash-scripts/delete-bucket (bucket_name)
 
 ### Permission denied
 chmod -R +x ./s3/bash-scripts 
@@ -12,10 +15,10 @@ chmod -R +x ./s3/bash-scripts
 (newest)  ./s3/bash-scripts/get-newest-bucket
 
 ### sync (random create file)
- ./s3/bash-scripts/sync (bucket_name) myfile-prefix
+./s3/bash-scripts/sync (bucket_name) myfile-prefix
 
 ### put-object
- ./s3/bash-scripts/put-objects (bucket_name) /tmp/newfile.txt
+./s3/bash-scripts/put-objects (bucket_name) /tmp/newfile.txt
 
 ### delete-objects (all)
- ./s3/bash-scripts/delete-objects (bucket_name)b
+./s3/bash-scripts/delete-objects (bucket_name)
