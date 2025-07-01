@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+# 設置腳本遇到錯誤時停止執行
+set -e
+
+# 定義輸出目錄變數
+OUTPUT_DIR="/tmp/s3-bash-scripts"
+
+# 刪除已存在的 OUTPUT_DIR 目錄及其內容
+# 這樣可以保證每次執行腳本時是從乾淨的狀態開始
+rm -r "$OUTPUT_DIR"
+
+# 創建新的輸出目錄（如果該目錄不存在）
+mkdir -p "$OUTPUT_DIR"
+
+# 生成 5 到 10 之間的隨機數字
+num_files=$((RANDOM % 6 + 5))
+
+# Check for bucket name (必須指定 bucket 名稱)
+if [ -z "$1" ] ; then
+    echo "There needs to be a bucket name eg. ./bucket my-bucket-name"
+    exit 1
+fi  
+
+# Check for folder name (必須指定 folder 名稱)
+if [ -z "$2" ] ; then
+    echo "There needs to be a folder name"
+    exit 2
+fi  
+
+# 設置 bucket 名稱和文件夾前綴
+BUCKET_NAME=$1
+FILENAME_PREFIX=$2
+
+# 創建隨機數量的文件
+for i in $(seq 1 $num_files); do
+  # 生成隨機的文件名
+  file_name="$OUTPUT_DIR/$FILENAME_PREFIX_$i.txt"
+  
+  # 使用 dd 命令生成隨機內容
+  dd if=/dev/urandom of="$file_name" bs=1024 count=$((RANDOM % 1024 + 1)) 2>/dev/null
+done
+
+# 顯示目錄結構 (如果有安裝 tree，否則可以使用 ls -R)
+if command -v tree &> /dev/null
+then
+    tree "$OUTPUT_DIR"
+else
+    echo "tree command not found, using ls instead:"
+    ls -R "$OUTPUT_DIR"
+fi
+
+# 將文件上傳至 S3 bucket 指定的 folder
+aws s3 sync "$OUTPUT_DIR" "s3://$BUCKET_NAME/$FILENAME_PREFIX/"

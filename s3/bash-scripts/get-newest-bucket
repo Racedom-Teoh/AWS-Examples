@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# list latest 5 buckets
+echo "==list newest bucket"
+
+aws s3api list-buckets | jq -r '.Buckets | sort_by(.CreationDate) | reverse | .[0:1] | .[] | .Name' 
