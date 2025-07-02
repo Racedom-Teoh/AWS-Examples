@@ -9,6 +9,7 @@ export AWS_CLI_AUTO_PROMPT=on-partial
 
 ### Permission denied
 chmod -R +x ./s3/bash-scripts 
+chmod u+x s3/iac/deploy
 
 ### list bucket
 (top10)   ./s3/bash-scripts/list-bucket
@@ -37,3 +38,20 @@ Install-AWSToolsModule AWS.Tools.S3 -CleanUp
 ruby --version
 bundle init  (它會自動在該資料夾下創建一個 Gemfile。這個檔案是用來列出你所需要的所有依賴庫,gems)
 bundle install
+
+------------------------------------------------------------------------------------------------------
+
+## java 
+cd java files 
+read readme files
+
+------------------------------------------------------------------------------------------------------
+
+## cloudformation 
+https://docs.aws.amazon.com/cli/latest/reference/cloudformation/
+
+### create stack through templete.yaml
+./s3/iac/cfn/deploy 
+
+### delete stack
+./s3/iac/cfn/delete-stack
