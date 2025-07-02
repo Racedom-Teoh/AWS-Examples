@@ -66,3 +66,15 @@ terraform init
 terraform plan
 terraform apply 
 terraform destroy
+
+------------------------------------------------------------------------------------------------------
+
+## CDK
+mkdir cdk
+cd cdk
+cdk init sample-app --language=typescript
+(change /lib/cdk.stack.ts file)
+cdk bootstrap
+cdk deploy
+
+------------------------------------------------------------------------------------------------------
