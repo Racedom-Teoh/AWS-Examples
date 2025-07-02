@@ -63,4 +63,6 @@ https://docs.aws.amazon.com/cli/latest/reference/cloudformation/
 terraform
 cd ./s3/iac/terraform
 terraform init
-
+terraform plan
+terraform apply 
+terraform destroy
