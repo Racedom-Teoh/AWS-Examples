@@ -24,7 +24,7 @@ chmod u+x s3/iac/deploy
 ### delete-objects (all)
 ./s3/bash-scripts/delete-objects (bucket_name)
 
-
+____________________________________________________________________
 
 ## Powershell (only s3)
 pwsh 
@@ -32,20 +32,20 @@ pwsh
 ### install module
 Install-AWSToolsModule AWS.Tools.S3 -CleanUp
 
-
+____________________________________________________________________
 
 ## ruby 
 ruby --version
 bundle init  (它會自動在該資料夾下創建一個 Gemfile。這個檔案是用來列出你所需要的所有依賴庫,gems)
 bundle install
 
-
+____________________________________________________________________
 
 ## java 
 cd java files 
 read readme files
 
-
+____________________________________________________________________
 
 ## cloudformation 
 https://docs.aws.amazon.com/cli/latest/reference/cloudformation/
@@ -56,7 +56,7 @@ https://docs.aws.amazon.com/cli/latest/reference/cloudformation/
 ### delete stack
 ./s3/iac/cfn/delete-stack
 
-
+____________________________________________________________________
 
 ## terraform
 ### check terraform
@@ -67,7 +67,7 @@ terraform plan
 terraform apply 
 terraform destroy
 
-
+____________________________________________________________________
 
 ## CDK
 mkdir cdk
@@ -77,3 +77,4 @@ cdk init sample-app --language=typescript
 cdk bootstrap
 cdk deploy
 
+____________________________________________________________________
