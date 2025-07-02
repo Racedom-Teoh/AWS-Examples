@@ -78,3 +78,18 @@ cdk bootstrap
 cdk deploy
 
 ____________________________________________________________________
+
+### Pulumi  
+website ： https://www.pulumi.com/docs/iac/download-install/
+
+curl -fsSL https://get.pulumi.com | sh (download pulumi)
+. ~/.bashrc （restart）
+pulumi (check all command)
+pulumi new -l (check command list in new )
+pulumi new aws-python 
+(click link to get token and writh project name )
+pulumi up 
+pulumi destroy  -- check in setting in given url 
+pulumi rm -s (stack name) --check in setting in given url 
+
+____________________________________________________________________
