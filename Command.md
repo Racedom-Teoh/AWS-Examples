@@ -55,3 +55,12 @@ https://docs.aws.amazon.com/cli/latest/reference/cloudformation/
 
 ### delete stack
 ./s3/iac/cfn/delete-stack
+
+------------------------------------------------------------------------------------------------------
+
+## terraform
+### check terraform
+terraform
+cd ./s3/iac/terraform
+terraform init
+
