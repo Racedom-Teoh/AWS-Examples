@@ -23,9 +23,17 @@ chmod -R +x ./s3/bash-scripts
 ### delete-objects (all)
 ./s3/bash-scripts/delete-objects (bucket_name)
 
+------------------------------------------------------------------------------------------------------
 
 ## Powershell (only s3)
 pwsh 
 
 ### install module
 Install-AWSToolsModule AWS.Tools.S3 -CleanUp
+
+------------------------------------------------------------------------------------------------------
+
+## ruby 
+ruby --version
+bundle init  (它會自動在該資料夾下創建一個 Gemfile。這個檔案是用來列出你所需要的所有依賴庫,gems)
+bundle install
